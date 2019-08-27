@@ -99,16 +99,3 @@ func (li *Glist) getoveralllength(len int32, p *GlistNode) int32 {
 func (li *Glist) searchp(item string) {
 	search(item, li.head)
 }
-
-func main() {
-	li := Generate_List()
-	var p *GlistNode
-	var x int32
-	var inf t
-	inf.value = "Tran"
-	li.add(inf, "DATA", nil)
-	p = li.head
-	x = li.getoveralllength(0, p)
-	//y := li.length
-	fmt.Print(x)
-}
