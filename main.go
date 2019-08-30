@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	/**
 	li := Generate_List()
@@ -20,5 +22,8 @@ func main() {
 	fmt.Print(x)
 
 	*/
+	//fmt.Print(reflect.TypeOf('('))
+	ct := longestValidParentheses_2("()(()")
+	fmt.Print(ct)
 
 }
