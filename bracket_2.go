@@ -1,32 +1,59 @@
 package main
 
-import "container/list"
+import (
+	"container/list"
+)
+
+func converttoInt(e interface{}) int {
+	switch v := e.(type) {
+	case int:
+		return v
+	default:
+		return -1
+	}
+
+}
 
 func longestValidParentheses_2(s string) int {
 	L := list.New()
-	var ct int
-	ct = 0
+	var length int
+	length = 0
+	L.PushBack(0)
 	for _, ch1 := range s {
-		if L.Len() == 0 {
-			L.PushBack(ch1)
-			continue
-		}
 		if ch1 == ')' {
 			//fmt.Print(S.Gethead())
-			if L.Back().Value == '(' {
+			if L.Len() == 1 {
 				L.Remove(L.Back())
-				ct += 2
+				L.PushBack(0)
+			}
+			p := converttoInt(L.Back().Value)
+			p = p + 2
+			L.Remove(L.Back())
+			q := converttoInt(L.Back().Value)
+			q = q + p
+			L.Remove(L.Back())
+			L.PushBack(q)
+			if converttoInt(L.Back().Value) > length {
+				length = converttoInt(L.Back().Value)
 				continue
 			}
 		} else {
-			this := L.PushBack(ch1)
-			if this.Prev().Value == '(' {
-				ct = 0
+			L.PushBack(0)
+		}
+
+	}
+	return length
+}
+
+func twoSum(nums []int, target int) []int {
+	for i := 0; i < len(nums); i++ {
+		for j := i + 1; j < len(nums); j++ {
+			if i+j == target {
+				a := []int{i, j}
+				return a
 			}
 		}
 
 	}
-
-	return ct
-
+	return []int{}
 }

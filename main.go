@@ -23,7 +23,7 @@ func main() {
 
 	*/
 	//fmt.Print(reflect.TypeOf('('))
-	ct := longestValidParentheses_2("()(()")
+	ct := twoSum([]int{2, 7, 5, 6}, 9)
 	fmt.Print(ct)
 
 }
